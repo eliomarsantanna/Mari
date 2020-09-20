@@ -2,11 +2,11 @@
 #
 # == Synopsis
 #
-# eliza_cli - eliza command line interface
+# mari - mari command line interface
 #
 # == Usage
 #
-# eliza_cli [options]
+# mari [options]
 #
 # -h, --help:
 #    show help
@@ -20,11 +20,11 @@
 
 my_bin    = File.dirname(__FILE__)
 my_lib    = my_bin + '/../lib'
-my_script = my_lib + '/eliza/scripts/original.txt'
+my_script = my_lib + '/mari/scripts/original.txt'
 
 $: << my_lib
 
-require 'eliza'
+require 'mari'
 require 'getoptlong'
 #require 'rdoc/usage' # missing in 1.9? how annoying...
 
@@ -43,7 +43,7 @@ opts = GetoptLong.new(
 opts.each do |opt, arg|
   case opt
   when '--help'
-    puts "usage: eliza_cli [--input=s] [--script=s]"
+    puts "usage: mari [--input=s] [--script=s]"
     exit 1
   when '--input'
     inputStream = File.new(arg)
@@ -55,4 +55,4 @@ opts.each do |opt, arg|
   end
 end
 
-Eliza.new(scriptName, inputStream, outputStream).run
+Mari.new(scriptName, inputStream, outputStream).run
